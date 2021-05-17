@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
 
-  validates :start_date, presence: true,
+  validates :start_date, presence: true
   validate  :start_date_cannot_be_in_the_past
 
   validates :duration, presence: true, numericality: { only_integer: true }

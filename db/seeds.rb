@@ -8,6 +8,7 @@
 require 'faker'
 
 User.destroy_all
+Event.destroy_all
 
 10.times do
   user = User.create!(
@@ -18,7 +19,7 @@ User.destroy_all
 end
 
 8.times do
-  Event.create!(
+  event = Event.create!(
     start_date: Time.now + rand(2..25).days,
     duration: rand(1..1000) * 5,
     title: Faker::Lorem.sentence(word_count: 5),
@@ -30,7 +31,7 @@ end
 end
 
 15.times do
-  Attendance.create(
+  Attendance.create!(
     event: Event.all.sample,
     attendee: User.all.sample
   )
