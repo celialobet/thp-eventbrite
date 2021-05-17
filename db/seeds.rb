@@ -16,3 +16,22 @@ User.destroy_all
     email: "anonymous@yopmail.com"
   )
 end
+
+8.times do
+  Event.create!(
+    start_date: Time.now + rand(2..25).days,
+    duration: rand(1..1000) * 5,
+    title: Faker::Lorem.sentence(word_count: 5),
+    description: Faker::Lorem.paragraph_by_chars(number: 155),
+    price: rand(1..1000),
+    location: Faker::Address.city,
+    administrator: User.all.sample
+  )
+end
+
+15.times do
+  Attendance.create(
+    event: Event.all.sample,
+    attendee: User.all.sample
+  )
+end
