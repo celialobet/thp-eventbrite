@@ -1,9 +1,9 @@
 class AttendanceMailer < ApplicationMailer
   default from: 'no-reply@monsite.fr'
 
-  def attendance_email(user, attendance)
+  def attendance_email(attendance)
     #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
-    @user = user
+    @user = attendance.attendee
     @attendance = attendance
     #on définit une variable @url qu'on utilisera dans la view d’e-mail
     @url = "http://monsite.fr/login"

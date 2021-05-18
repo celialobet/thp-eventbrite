@@ -21,7 +21,7 @@ end
 8.times do
   event = Event.create!(
     start_date: Time.now + rand(2..25).days,
-    duration: rand(1..1000) * 5,
+    duration: 25,
     title: Faker::Lorem.sentence(word_count: 5),
     description: Faker::Lorem.paragraph_by_chars(number: 155),
     price: rand(1..1000),
@@ -31,7 +31,7 @@ end
 end
 
 15.times do
-  Attendance.create!(
+  attendance = Attendance.create!(
     event: Event.all.sample,
     attendee: User.all.sample
   )
