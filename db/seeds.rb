@@ -9,12 +9,16 @@ require 'faker'
 
 User.destroy_all
 Event.destroy_all
+Attendance.destroy_all
 
 10.times do
-  user = User.create!(
-    first_name: Faker::Name.first_name, 
-    last_name: Faker::Name.last_name,
-    email: "anonymous@yopmail.com"
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  user = User.create(
+    first_name: first_name,
+    last_name: last_name,
+    email: "#{first_name.downcase}.#{last_name.downcase}@yopmail.com",
+    encrypted_password: Faker::Internet.password(min_length: 6, max_length: 20)
   )
 end
 
@@ -32,7 +36,10 @@ end
 
 15.times do
   attendance = Attendance.create!(
+    stripe_customer_id: Faker::Stripe.valid_card,
     event: Event.all.sample,
     attendee: User.all.sample
   )
 end
+
+puts "seed OK"

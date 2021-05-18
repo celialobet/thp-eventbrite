@@ -1,2 +1,28 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Events for Everyone!</h1>
+      <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+      <p><a class="btn btn-primary btn-lg" href="<%= new_event_path %>" role="button">Create New Event »</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <% @events.each do |event| %>
+      <div class="col-md-4">
+        <h2><%= event.title %></h2>
+        <p><%= event.description %></p>
+        <p><%= link_to "View details", {controller: "events", action: "show", id: event.id}, class: "btn btn-secondary" %></p>
+      </div>
+      <% end %>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
